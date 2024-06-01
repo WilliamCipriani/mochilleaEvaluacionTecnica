@@ -36,17 +36,111 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 ```markdown
 ## Documentación de la API
 
-La documentación de la API está disponible en la colección de Postman incluida en este repositorio. Para importar la colección:
-
-1. Abre Postman.
-2. Haz clic en "Importar" en la esquina superior izquierda.
-3. Selecciona el archivo `mochillea-evaluacion-tecnica.postman_collection.json` ubicado en la raíz del proyecto.
-4. La colección se importará y podrás ver todos los endpoints disponibles.
-
 ### Endpoints Disponibles
 
-- **GET** /digital-guide/digital-guides
 - **POST** /digital-guide/content
 - **GET** /digital-guide/content/:id
 - **PUT** /digital-guide/content/:id
 - **DELETE** /digital-guide/content/:id
+
+####EJEMPLOS:
+
+1. POST /digital-guide/content
+
+ -Descripción: Crea una nueva experiencia con sus subdocumentos.
+
+Ejemplo de Petición:
+
+POST http://localhost:4000/digital-guide/content
+Content-Type: application/json
+
+{
+  "nombre": "Aventura en las montañas",
+  "categoria": "Aventura",
+  "estado": "Activa",
+  "actividad": {
+    "nombre": "Escalada",
+    "tipo": "Deporte",
+    "puntuacion": 5,
+    "imagen": "url_imagen_1",
+    "estado": "Disponible"
+  },
+  "destino": {
+    "nombre": "Cordillera Blanca",
+    "tipo": "Montaña",
+    "puntuacion": 5,
+    "imagen": "url_imagen_2",
+    "estado": "Disponible"
+  },
+  "evento": {
+    "nombre": "Festival del Sol",
+    "tipo": "Cultural",
+    "puntuacion": 5,
+    "imagen": "url_imagen_3",
+    "estado": "Programado"
+  },
+  "festividad": {
+    "nombre": "Fiestas Patrias",
+    "tipo": "Nacional",
+    "puntuacion": 5,
+    "imagen": "url_imagen_4",
+    "estado": "Celebrado"
+  }
+}
+
+2. GET /digital-guide/content/
+ -Descripción: Obtiene una experiencia por su ID.
+
+Ejemplo de Petición:
+GET http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+
+
+3. PUT /digital-guide/content/
+  -Descripción: Actualiza una experiencia existente.
+
+  PUT http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+Content-Type: application/json
+
+{
+  "nombre": "Aventura en las montañas actualizada",
+  "categoria": "Aventura",
+  "estado": "Activa",
+  "actividad": {
+    "nombre": "Escalada actualizada",
+    "tipo": "Deporte",
+    "puntuacion": 5,
+    "imagen": "url_imagen_1_actualizada",
+    "estado": "Disponible"
+  },
+  "destino": {
+    "nombre": "Cordillera Blanca actualizada",
+    "tipo": "Montaña",
+    "puntuacion": 5,
+    "imagen": "url_imagen_2_actualizada",
+    "estado": "Disponible"
+  },
+  "evento": {
+    "nombre": "Festival del Sol actualizado",
+    "tipo": "Cultural",
+    "puntuacion": 5,
+    "imagen": "url_imagen_3_actualizada",
+    "estado": "Programado"
+  },
+  "festividad": {
+    "nombre": "Fiestas Patrias actualizadas",
+    "tipo": "Nacional",
+    "puntuacion": 5,
+    "imagen": "url_imagen_4_actualizada",
+    "estado": "Celebrado"
+  }
+}
+
+5. DELETE /digital-guide/content/
+  -Descripción: Elimina una experiencia por su ID.
+
+  DELETE http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+
+6. GET /digital-guide/digital-guides
+  -Descripción: Obtiene una lista de experiencias con paginación y filtros opcionales.
+
+GET http://localhost:4000/digital-guide/digital-guides?page=1&limit=10&nombre=Aventura
