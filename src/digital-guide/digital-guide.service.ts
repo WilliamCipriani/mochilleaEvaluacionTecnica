@@ -71,18 +71,18 @@ export class DigitalGuideService {
     return this.experienciaModel.findByIdAndUpdate(id, updateExperienciaDto, { new: true }).exec();
   }
 
-  async delete(id: string): Promise<Experiencia> {
+  async delete(id: string): Promise<{ message: string }> {
     const experiencia = await this.experienciaModel.findById(id).exec();
     if (!experiencia) {
       throw new Error('Experiencia not found');
     }
-
     await this.actividadModel.findByIdAndDelete(experiencia.actividad).exec();
     await this.destinoModel.findByIdAndDelete(experiencia.destino).exec();
     await this.eventoModel.findByIdAndDelete(experiencia.evento).exec();
     await this.festividadModel.findByIdAndDelete(experiencia.festividad).exec();
+    await this.experienciaModel.findByIdAndDelete(id).exec();
 
-    return this.experienciaModel.findByIdAndDelete(id).exec();
+    return { message: 'Experiencia eliminada correctamente' };
   }
 
   async findAll(query: any): Promise<{ data: Experiencia[], total: number }> {
