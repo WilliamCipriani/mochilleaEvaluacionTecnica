@@ -27,6 +27,9 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 4. **Verificar que Todo Funcione Correctamente**:
    - Asegúrate de que la aplicación se esté ejecutando correctamente accediendo a `http://localhost:4000` o al puerto que hayas configurado.
 
+5. **Conexion a la base de datos MongoDB Compass**
+   `mongodb+srv://mochillea:Welcome2024@typsa.lnco923.mongodb.net/` 
+
 ### Confirmar la Captura de Pantalla
 
 `assets/img/ColeccionesMongo.png`.
