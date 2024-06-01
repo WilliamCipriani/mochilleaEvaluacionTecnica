@@ -9,8 +9,8 @@ export class DigitalGuideController {
   constructor(private readonly digitalGuideService: DigitalGuideService) {}
 
   @Post('content')
-  create(@Body() createExperienciaDto: CreateExperienciaDto) {
-    return this.digitalGuideService.create(createExperienciaDto);
+  create(@Body() createExperienciaDtos: CreateExperienciaDto[]) {
+    return this.digitalGuideService.create(createExperienciaDtos);
   }
 
   @Get('content/:id')

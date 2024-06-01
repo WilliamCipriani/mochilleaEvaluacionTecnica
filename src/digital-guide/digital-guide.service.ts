@@ -19,28 +19,33 @@ export class DigitalGuideService {
     @InjectModel(Festividad.name) private festividadModel: Model<FestividadDocument>,
   ) {}
 
-  async create(createExperienciaDto: CreateExperienciaDto): Promise<Experiencia> {
-    const actividad = new this.actividadModel(createExperienciaDto.actividad);
-    const savedActividad = await actividad.save();
-
-    const destino = new this.destinoModel(createExperienciaDto.destino);
-    const savedDestino = await destino.save();
-
-    const evento = new this.eventoModel(createExperienciaDto.evento);
-    const savedEvento = await evento.save();
-
-    const festividad = new this.festividadModel(createExperienciaDto.festividad);
-    const savedFestividad = await festividad.save();
-
-    const createdExperiencia = new this.experienciaModel({
-      ...createExperienciaDto,
-      actividad: savedActividad._id,
-      destino: savedDestino._id,
-      evento: savedEvento._id,
-      festividad: savedFestividad._id,
-    });
-
-    return createdExperiencia.save();
+  async create(createExperienciaDtos: CreateExperienciaDto[]): Promise<Experiencia[]> {
+    const experiencias = [];
+    for (const createExperienciaDto of createExperienciaDtos) {
+      const actividad = new this.actividadModel(createExperienciaDto.actividad);
+      const savedActividad = await actividad.save();
+  
+      const destino = new this.destinoModel(createExperienciaDto.destino);
+      const savedDestino = await destino.save();
+  
+      const evento = new this.eventoModel(createExperienciaDto.evento);
+      const savedEvento = await evento.save();
+  
+      const festividad = new this.festividadModel(createExperienciaDto.festividad);
+      const savedFestividad = await festividad.save();
+  
+      const createdExperiencia = new this.experienciaModel({
+        ...createExperienciaDto,
+        actividad: savedActividad._id,
+        destino: savedDestino._id,
+        evento: savedEvento._id,
+        festividad: savedFestividad._id,
+      });
+  
+      const savedExperiencia = await createdExperiencia.save();
+      experiencias.push(savedExperiencia);
+    }
+    return experiencias;
   }
 
   async findOne(id: string): Promise<Experiencia> {
@@ -97,7 +102,7 @@ export class DigitalGuideService {
         .find(filterCriteria)
         .skip(offset)
         .limit(Number(limit))
-        .populate('actividad destino evento festividad')
+        .populate('actividad destino evento festividad')  
         .exec(),
       this.experienciaModel.countDocuments(filterCriteria).exec(),
     ]);

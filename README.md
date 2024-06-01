@@ -1,74 +1,52 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Mochillea Evaluación Técnica
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este proyecto es una aplicación backend desarrollada con el framework [NestJS](https://nestjs.com/), que proporciona una API RESTful para gestionar experiencias turísticas. La aplicación utiliza MongoDB para el almacenamiento de datos.
 
-## Description
+## Requisitos Previos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Node.js
+- npm 
+- MongoDB (puede ser una instancia local o un servicio en la nube como MongoDB Atlas)
 
-## Installation
+## Instalación
 
-```bash
-$ npm install
-```
+1. Clona este repositorio en tu máquina local:
+   ```bash
+   git clone https://github.com/WilliamCipriani/mochilleaEvaluacionTecnica.git
+   cd mochilleaEvaluacionTecnica
 
-## Running the app
+2. **Instalación de Dependencias**:
+   - Abre una terminal en la raíz del proyecto.
+   - Ejecuta el comando `npm install` para instalar todas las dependencias necesarias.
 
-```bash
-# development
-$ npm run start
+3. **Ejecutar la Aplicación**:
+   - Utiliza el comando (`npm run start:dev`) para ejecutar la aplicación.
 
-# watch mode
-$ npm run start:dev
+4. **Verificar que Todo Funcione Correctamente**:
+   - Asegúrate de que la aplicación se esté ejecutando correctamente accediendo a `http://localhost:4000` o al puerto que hayas configurado.
 
-# production mode
-$ npm run start:prod
-```
+### Confirmar la Captura de Pantalla
 
-## Test
+`assets/img/ColeccionesMongo.png`.
 
-```bash
-# unit tests
-$ npm run test
+### Agregar Documentación de la API con Postman
 
-# e2e tests
-$ npm run test:e2e
+```markdown
+## Documentación de la API
 
-# test coverage
-$ npm run test:cov
-```
+La documentación de la API está disponible en la colección de Postman incluida en este repositorio. Para importar la colección:
 
-## Support
+1. Abre Postman.
+2. Haz clic en "Importar" en la esquina superior izquierda.
+3. Selecciona el archivo `mochillea-evaluacion-tecnica.postman_collection.json` ubicado en la raíz del proyecto.
+4. La colección se importará y podrás ver todos los endpoints disponibles.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Endpoints Disponibles
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-# mochilleaEvaluacionTecnica
+- **GET** /digital-guide/digital-guides
+- **POST** /digital-guide/content
+- **GET** /digital-guide/content/:id
+- **PUT** /digital-guide/content/:id
+- **DELETE** /digital-guide/content/:id
