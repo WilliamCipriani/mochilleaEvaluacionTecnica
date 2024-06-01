@@ -19,7 +19,7 @@ export class DigitalGuideService {
     @InjectModel(Festividad.name) private festividadModel: Model<FestividadDocument>,
   ) {}
 
-  async create(createExperienciaDtos: CreateExperienciaDto[]): Promise<Experiencia[]> {
+  async create(createExperienciaDtos: CreateExperienciaDto[]): Promise<{ message: string, experiencias: Experiencia[] }> {
     const experiencias = [];
     for (const createExperienciaDto of createExperienciaDtos) {
       const actividad = new this.actividadModel(createExperienciaDto.actividad);
@@ -45,14 +45,14 @@ export class DigitalGuideService {
       const savedExperiencia = await createdExperiencia.save();
       experiencias.push(savedExperiencia);
     }
-    return experiencias;
+    return { message: 'Creación de experiencia correcta', experiencias };
   }
 
   async findOne(id: string): Promise<Experiencia> {
     return this.experienciaModel.findById(id).populate('actividad destino evento festividad').exec();
   }
 
-  async update(id: string, updateExperienciaDto: UpdateExperienciaDto): Promise<Experiencia> {
+  async update(id: string, updateExperienciaDto: UpdateExperienciaDto): Promise<{ message: string, experiencia: Experiencia }> {
     const experiencia = await this.experienciaModel.findById(id).exec();
 
     if (updateExperienciaDto.actividad) {
@@ -68,9 +68,10 @@ export class DigitalGuideService {
       await this.festividadModel.findByIdAndUpdate(experiencia.festividad, updateExperienciaDto.festividad).exec();
     }
 
-    return this.experienciaModel.findByIdAndUpdate(id, updateExperienciaDto, { new: true }).exec();
+    const updatedExperiencia = await this.experienciaModel.findByIdAndUpdate(id, updateExperienciaDto, { new: true }).exec();
+    return { message: 'Actualización de experiencia correcta', experiencia: updatedExperiencia };
   }
-
+  
   async delete(id: string): Promise<{ message: string }> {
     const experiencia = await this.experienciaModel.findById(id).exec();
     if (!experiencia) {

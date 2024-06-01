@@ -57,7 +57,8 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
      ```
 
      ```json
-     {
+     [
+      {
        "nombre": "Aventura en las montañas",
        "categoria": "Aventura",
        "estado": "Activa",
@@ -89,23 +90,29 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
          "imagen": "url_imagen_4",
          "estado": "Celebrado"
        }
-     }
+      }
+     ]
      ```
 
      - **Ejemplo de Respuesta:**
 
      ```json
-     {
-       "_id": "60c72b2f5f1b2c6d88f5d1c4",
-       "nombre": "Aventura en las montañas",
-       "categoria": "Aventura",
-       "estado": "Activa",
-       "actividad": "60c72b2f5f1b2c6d88f5d1c5",
-       "destino": "60c72b2f5f1b2c6d88f5d1c6",
-       "evento": "60c72b2f5f1b2c6d88f5d1c7",
-       "festividad": "60c72b2f5f1b2c6d88f5d1c8",
-       "__v": 0
-     }
+    {
+    "message": "Creación de experiencia correcta",
+    "experiencias": [
+        {
+            "nombre": "Aventura en las montañas",
+            "categoria": "Aventura",
+            "estado": "Activa",
+            "actividad": "665b7ea0bc3a0ccb43470bcb",
+            "destino": "665b7ea0bc3a0ccb43470bcd",
+            "evento": "665b7ea0bc3a0ccb43470bcf",
+            "festividad": "665b7ea0bc3a0ccb43470bd1",
+            "_id": "665b7ea0bc3a0ccb43470bd3",
+            "__v": 0
+        }
+      ]
+    }
      ```
 
 ### Explicación Detallada
@@ -215,16 +222,6 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 - **Parámetros de Ruta:**
   - `id`: El ID de la experiencia que se desea obtener. Este parámetro es obligatorio.
 
-#### Ejemplo de Uso en Postman
-
-1. **Abrir Postman**.
-2. **Crear una Nueva Solicitud**.
-3. **Configurar la Solicitud**:
-   - Método: `GET`
-   - URL: `http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4`
-4. **Enviar la Solicitud**:
-   - Haz clic en "Send".
-
 3. **PUT /digital-guide/content/:id**
    - **Descripción:** Actualiza una experiencia existente.
    - **Parámetros de Ruta:**
@@ -274,43 +271,43 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 
      ```json
      {
-       "_id": "60c72b2f5f1b2c6d88f5d1c4",
-       "nombre": "Aventura en las montañas actualizada",
-       "categoria": "Aventura",
-       "estado": "Activa",
-       "actividad": {
-         "_id": "60c72b2f5f1b2c6d88f5d1c5",
-         "nombre": "Escalada actualizada",
-         "tipo": "Deporte",
-         "puntuacion": 5,
-         "imagen": "url_imagen_1_actualizada",
-         "estado": "Disponible"
-       },
-       "destino": {
-         "_id": "60c72b2f5f1b2c6d88f5d1c6",
-         "nombre": "Cordillera Blanca actualizada",
-         "tipo": "Montaña",
-         "puntuacion": 5,
-         "imagen": "url_imagen_2_actualizada",
-         "estado": "Disponible"
-       },
-       "evento": {
-         "_id": "60c72b2f5f1b2c6d88f5d1c7",
-         "nombre": "Festival del Sol actualizado",
-         "tipo": "Cultural",
-         "puntuacion": 5,
-         "imagen": "url_imagen_3_actualizada",
-         "estado": "Programado"
-       },
-       "festividad": {
-         "_id": "60c72b2f5f1b2c6d88f5d1c8",
-         "nombre": "Fiestas Patrias actualizadas",
-         "tipo": "Nacional",
-         "puntuacion": 5,
-         "imagen": "url_imagen_4_actualizada",
-         "estado": "Celebrado"
-       }
-     }
+    "message": "Actualización de experiencia correcta",
+    "experiencia": {
+        "_id": "665b7d951c545c2348057fc2",
+        "nombre": "Aventura en las montañas actualizada",
+        "categoria": "Aventura",
+        "estado": "Activa",
+        "actividad": {
+            "nombre": "Escalada actualizada",
+            "tipo": "Deporte",
+            "puntuacion": 5,
+            "imagen": "url_imagen_1_actualizada",
+            "estado": "Disponible"
+        },
+        "destino": {
+            "nombre": "Cordillera Blanca actualizada",
+            "tipo": "Montaña",
+            "puntuacion": 5,
+            "imagen": "url_imagen_2_actualizada",
+            "estado": "Disponible"
+        },
+        "evento": {
+            "nombre": "Festival del Sol actualizado",
+            "tipo": "Cultural",
+            "puntuacion": 5,
+            "imagen": "url_imagen_3_actualizada",
+            "estado": "Programado"
+        },
+        "festividad": {
+            "nombre": "Fiestas Patrias actualizadas",
+            "tipo": "Nacional",
+            "puntuacion": 5,
+            "imagen": "url_imagen_4_actualizada",
+            "estado": "Celebrado"
+        },
+        "__v": 0
+      }
+    }
      ```
 ### Explicación Detallada
 
