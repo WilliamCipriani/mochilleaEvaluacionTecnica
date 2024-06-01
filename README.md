@@ -43,104 +43,131 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 - **PUT** /digital-guide/content/:id
 - **DELETE** /digital-guide/content/:id
 
-####EJEMPLOS:
+#### EJEMPLOS:
 
-1. POST /digital-guide/content
+1. **POST /digital-guide/content**
 
- -Descripción: Crea una nueva experiencia con sus subdocumentos.
+  **Descripción:** Crea una nueva experiencia con sus subdocumentos.
+   - **Ejemplo de Petición:**
 
-Ejemplo de Petición:
+     ```http
+     POST http://localhost:4000/digital-guide/content
+     Content-Type: application/json
+     ```
 
-POST http://localhost:4000/digital-guide/content
-Content-Type: application/json
+     ```json
+     {
+       "nombre": "Aventura en las montañas",
+       "categoria": "Aventura",
+       "estado": "Activa",
+       "actividad": {
+         "nombre": "Escalada",
+         "tipo": "Deporte",
+         "puntuacion": 5,
+         "imagen": "url_imagen_1",
+         "estado": "Disponible"
+       },
+       "destino": {
+         "nombre": "Cordillera Blanca",
+         "tipo": "Montaña",
+         "puntuacion": 5,
+         "imagen": "url_imagen_2",
+         "estado": "Disponible"
+       },
+       "evento": {
+         "nombre": "Festival del Sol",
+         "tipo": "Cultural",
+         "puntuacion": 5,
+         "imagen": "url_imagen_3",
+         "estado": "Programado"
+       },
+       "festividad": {
+         "nombre": "Fiestas Patrias",
+         "tipo": "Nacional",
+         "puntuacion": 5,
+         "imagen": "url_imagen_4",
+         "estado": "Celebrado"
+       }
+     }
+     ```
 
-{
-  "nombre": "Aventura en las montañas",
-  "categoria": "Aventura",
-  "estado": "Activa",
-  "actividad": {
-    "nombre": "Escalada",
-    "tipo": "Deporte",
-    "puntuacion": 5,
-    "imagen": "url_imagen_1",
-    "estado": "Disponible"
-  },
-  "destino": {
-    "nombre": "Cordillera Blanca",
-    "tipo": "Montaña",
-    "puntuacion": 5,
-    "imagen": "url_imagen_2",
-    "estado": "Disponible"
-  },
-  "evento": {
-    "nombre": "Festival del Sol",
-    "tipo": "Cultural",
-    "puntuacion": 5,
-    "imagen": "url_imagen_3",
-    "estado": "Programado"
-  },
-  "festividad": {
-    "nombre": "Fiestas Patrias",
-    "tipo": "Nacional",
-    "puntuacion": 5,
-    "imagen": "url_imagen_4",
-    "estado": "Celebrado"
-  }
-}
+2. **GET /digital-guide/content/:id**
+- **Descripción:** Obtiene una experiencia por su ID.
+   - **Parámetros de Ruta:**
+     - `id`: El ID de la experiencia que se desea obtener.
 
-2. GET /digital-guide/content/
- -Descripción: Obtiene una experiencia por su ID.
+   - **Ejemplo de Petición:**
 
-Ejemplo de Petición:
-GET http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+     ```http
+     GET http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+     ```
 
+3. **PUT /digital-guide/content/:id**
+   - **Descripción:** Actualiza una experiencia existente.
+   - **Parámetros de Ruta:**
+     - `id`: El ID de la experiencia que se desea actualizar.
 
-3. PUT /digital-guide/content/
-  -Descripción: Actualiza una experiencia existente.
+   - **Ejemplo de Petición:**
 
-  PUT http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
-Content-Type: application/json
+     ```http
+     PUT http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+     ```
+    ```json
+     {
+       "nombre": "Aventura en las montañas actualizada",
+       "categoria": "Aventura",
+       "estado": "Activa",
+       "actividad": {
+         "nombre": "Escalada actualizada",
+         "tipo": "Deporte",
+         "puntuacion": 5,
+         "imagen": "url_imagen_1_actualizada",
+         "estado": "Disponible"
+       },
+       "destino": {
+         "nombre": "Cordillera Blanca actualizada",
+         "tipo": "Montaña",
+         "puntuacion": 5,
+         "imagen": "url_imagen_2_actualizada",
+         "estado": "Disponible"
+       },
+       "evento": {
+         "nombre": "Festival del Sol actualizado",
+         "tipo": "Cultural",
+         "puntuacion": 5,
+         "imagen": "url_imagen_3_actualizada",
+         "estado": "Programado"
+       },
+       "festividad": {
+         "nombre": "Fiestas Patrias actualizadas",
+         "tipo": "Nacional",
+         "puntuacion": 5,
+         "imagen": "url_imagen_4_actualizada",
+         "estado": "Celebrado"
+       }
+     }
+     ```
 
-{
-  "nombre": "Aventura en las montañas actualizada",
-  "categoria": "Aventura",
-  "estado": "Activa",
-  "actividad": {
-    "nombre": "Escalada actualizada",
-    "tipo": "Deporte",
-    "puntuacion": 5,
-    "imagen": "url_imagen_1_actualizada",
-    "estado": "Disponible"
-  },
-  "destino": {
-    "nombre": "Cordillera Blanca actualizada",
-    "tipo": "Montaña",
-    "puntuacion": 5,
-    "imagen": "url_imagen_2_actualizada",
-    "estado": "Disponible"
-  },
-  "evento": {
-    "nombre": "Festival del Sol actualizado",
-    "tipo": "Cultural",
-    "puntuacion": 5,
-    "imagen": "url_imagen_3_actualizada",
-    "estado": "Programado"
-  },
-  "festividad": {
-    "nombre": "Fiestas Patrias actualizadas",
-    "tipo": "Nacional",
-    "puntuacion": 5,
-    "imagen": "url_imagen_4_actualizada",
-    "estado": "Celebrado"
-  }
-}
+4. **DELETE /digital-guide/content/:id**
+   - **Descripción:** Elimina una experiencia por su ID.
+   - **Parámetros de Ruta:**
+     - `id`: El ID de la experiencia que se desea eliminar.
 
-5. DELETE /digital-guide/content/
-  -Descripción: Elimina una experiencia por su ID.
+   - **Ejemplo de Petición:**
 
-  DELETE http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+     ```http
+     DELETE http://localhost:4000/digital-guide/content/60c72b2f5f1b2c6d88f5d1c4
+     ```
 
-6. GET /digital-guide/digital-guides
-  -Descripción: Obtiene una lista de experiencias con paginación y filtros opcionales.
+5. **GET /digital-guide/digital-guides/**
+  - **Descripción:** Obtiene una lista de experiencias con paginación y filtros opcionales.
+   - **Parámetros de Consulta:**
+     - `page`: (opcional) Número de página para la paginación.
+     - `limit`: (opcional) Número de elementos por página.
+     - `nombre`: (opcional) Filtra las experiencias por nombre.
+   
+   - **Ejemplo de Petición:**
 
-GET http://localhost:4000/digital-guide/digital-guides?page=1&limit=10&nombre=Aventura
+     ```http
+     GET http://localhost:4000/digital-guide/digital-guides?page=1&limit=10&nombre=Aventura
+     ```
