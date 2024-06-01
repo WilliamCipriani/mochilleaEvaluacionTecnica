@@ -30,6 +30,7 @@ Este proyecto es una aplicación backend desarrollada con el framework [NestJS](
 ### Confirmar la Captura de Pantalla
 
 `assets/img/ColeccionesMongo.png`.
+![Captura de Pantalla de MongoDB](assets/img/ColeccionesMongo.png)
 
 ### Agregar Documentación de la API con Postman
 
